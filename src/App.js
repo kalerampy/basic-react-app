@@ -1,14 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import MainNavbar from './Components/MainNavbar'
+import Resources from './Pages/Resources/Resources'
+import FormPage from './Pages/TripForm/FormPage'
+import Home from './Pages/Home'
+import {Routes, Route} from 'react-router-dom'
+import Header from './Components/Header'
+import './App.css'
 
-function App() {
+export default function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-      </header>
+      <Header />
+      <MainNavbar />
+      <Routes>
+        <Route exact path='/' element={<Home />} />
+        <Route path='/new-trip' element={<FormPage/>}/>
+        <Route path="resources" element={<Resources />}/>
+      </Routes>
     </div>
   );
 }
-
-export default App;
