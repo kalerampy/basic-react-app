@@ -65,7 +65,7 @@ const handleSubmit = (e) => {
   return (
     <div className="new-trip-form">
       <h2>Create a New Trip</h2>
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} data-netlify="true">
       <Box className="new-trip-form-input"
           sx={{
           width: 500,
