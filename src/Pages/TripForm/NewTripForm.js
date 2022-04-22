@@ -35,13 +35,13 @@ const NewTripForm = () => {
   }
 
 const handleSubmit = (e) => {
-    
-    getLatLong(tripInfo, e)
+    getLatLong(tripInfo)
+    e.preventDefault()
     
   }
 
   const navigate = useNavigate()
-  const postToServer = (geo, e) => {
+  const postToServer = (geo) => {
     console.log(geo)
     fetch(URL, {
             method: 'POST',
@@ -52,15 +52,15 @@ const handleSubmit = (e) => {
             response.json()
             navigate('/')
           })
-      e.preventDefault()
+      
   }
 
-  const getLatLong = async (input, e) => {
+  const getLatLong = async (input) => {
     let res = await fetch(`http://api.positionstack.com/v1/forward?access_key=${ACCESS_KEY}&query=${input.address}, ${input.city} ${input.state}`)
     let response = await res.json()
     console.log(response)
     const geo = {...tripInfo, geolocation: [response.data[0].latitude, response.data[0].longitude]}
-    postToServer(geo, e)
+    postToServer(geo)
   }
 
   return (
