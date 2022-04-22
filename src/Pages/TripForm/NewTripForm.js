@@ -35,7 +35,7 @@ const NewTripForm = () => {
   }
 
 const handleSubmit = (e) => {
-    e.preventDefault()
+    
     getLatLong(tripInfo)
     
   }
@@ -52,6 +52,7 @@ const handleSubmit = (e) => {
             response.json()
             navigate('/')
           })
+      e.preventDefault()
   }
 
   const getLatLong = async (input) => {
