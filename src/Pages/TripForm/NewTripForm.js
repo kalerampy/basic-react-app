@@ -56,9 +56,8 @@ const handleSubmit = (e) => {
   }
 
   const getLatLong = async (input) => {
-    let res = await fetch(`https://api.positionstack.com/v1/forward?access_key=${ACCESS_KEY}&query=${input.address}, ${input.city} ${input.state}`)
+    let res = await fetch(`http://api.positionstack.com/v1/forward?access_key=${ACCESS_KEY}&query=${input.address}, ${input.city} ${input.state}`)
     let response = await res.json()
-    console.log(response)
     const geo = {...tripInfo, geolocation: [response.data[0].latitude, response.data[0].longitude]}
     postToServer(geo)
   }
